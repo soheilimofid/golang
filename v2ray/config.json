@@ -1,0 +1,77 @@
+{
+    "log": {
+        "loglevel": "debug"
+      },    
+    "inbounds": [
+      {
+        "listen": "0.0.0.0",
+        "port": 9007,
+        "protocol": "socks",
+        "settings": {
+          "auth": "password",
+          "accounts": [
+            {
+              "user": "test123@gmail.com",
+              "pass": "test123@gmail.com"
+            }
+          ],
+          "udp": true
+        }
+      },
+      {
+        "listen": "0.0.0.0",
+        "port": 9008,
+        "protocol": "shadowsocks",
+        "settings": {
+          "password": "test123@gmail.com",
+          "timeout": 60,
+          "method": "chacha20-ietf-poly1305"
+        }
+      },
+      {
+        "listen": "0.0.0.0",
+        "port": 9009,
+        "protocol": "vmess",
+        "settings": {
+          "clients": [
+            {
+              "id": "df21f242-4bf0-4ce1-bb98-8c5968c13fa0",
+              "alterId": 0,
+              "security": "auto"
+            }
+          ]
+        }
+      },
+      {
+        "port": 80,
+        "protocol": "trojan",
+        "settings": {
+          "clients": [
+            {
+              "email": "test123@gmail.com",
+              "password": "test123@gmail.com"
+            }
+          ]
+        },
+        "streamSettings": {
+          "network": "ws",
+          "wsSettings": {
+            "path": "/moya"
+          }
+        }
+      }
+    ],
+    "outbounds": [
+      {
+        "protocol": "freedom",
+        "settings": {}
+      }
+    ],
+    "dns": {
+      "servers": [
+        "1.1.1.1",
+        "8.8.8.8",
+        "8.8.4.4"
+      ]
+    }
+  }
